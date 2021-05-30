@@ -1,5 +1,6 @@
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: #e5e5e5;
 }
 
 .dark-overlay {
@@ -18,6 +19,12 @@ body {
 }
 
 .remove-btn {
-    color: #c41313 !important;
+    color: #911d2d !important;
     margin-left: 20px !important;
+}
+
+.color {
+    &--red {
+        color: #911d2d;
+    }
 }
