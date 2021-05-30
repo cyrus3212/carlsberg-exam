@@ -55,3 +55,26 @@
     height: 15px;
     font-size: 12px;
 }
+
+@media (max-width: 1300px) {
+    .products {
+        &__item {
+            &-add-btn {
+                width: 93%;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .products {
+        flex-direction: column;
+        
+        &__item {
+            width: 85%;
+            &-add-btn {
+                width: 93%;
+            }
+        }
+    }
+}
