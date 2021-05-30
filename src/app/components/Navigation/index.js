@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import Item from '../Cart';
+import { useSelector } from 'react-redux';
 import './navigation.scss';
 
-const Navigation = ({ cart, setCart }) => {
+const Navigation = () => {
+  const cart = useSelector(state => state.cart.data);
   const [isShowModal, setShowModal] = useState(false);
 
   let totalCost = 0;
   const products = cart.map(product => {
     totalCost = totalCost + (Number(product.price) * product.quantity);
 
-    return <Item key={product.id} cart={cart} product={product} setCart={setCart} />
+    return <Item key={product.id} product={product} />
   });
 
   const onClickCart = () => {
@@ -39,9 +41,13 @@ const Navigation = ({ cart, setCart }) => {
               <h2>Cart</h2>
               <i className="far fa-times-circle" onClick={onCloseCart}/>
             </div>
-            { products.length ? products : <p className="text-center">No products selected</p> }
+            
+            <div className="cart__item-container">
+              { products.length ? products : <p className="text-center">No products selected</p> }
+            </div>
+            
             <div className="cart__total">
-              { totalCost > 0 && <div>Total: ${totalCost}</div>}
+              { totalCost > 0 && <h3>Total: ${totalCost}</h3>}
             </div>
           </div>
           <div className="dark-overlay"></div>

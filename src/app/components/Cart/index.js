@@ -1,8 +1,11 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCartProducts } from '../../redux/actions/cartActions';
 import './cart.scss';
 
-const Item = ({ cart, product, setCart }) => {
-    console.log('product', product)
+const Item = ({ product }) => {
+    const cart = useSelector(state => state.cart.data);
+    const dispatch = useDispatch();
 
     const onUpdateQty = (selectedProduct, isAdd) => () => {
 
@@ -17,7 +20,7 @@ const Item = ({ cart, product, setCart }) => {
         const selectedIndex = cart.findIndex(selectedIndex => selectedIndex.id === selectedProduct.id);
         let updatedCart = [...cart];
         updatedCart[selectedIndex] = selectedProduct;
-        setCart(updatedCart);
+        dispatch(setCartProducts(updatedCart));
     };
         
     const onDeleteItem = ({ id }) => () => {
@@ -27,7 +30,7 @@ const Item = ({ cart, product, setCart }) => {
         updatedCart[selectedProduct].isAdded = false;
 
         updatedCart.splice(selectedProduct, 1);
-        setCart(updatedCart);
+        dispatch(setCartProducts(updatedCart));
     }
 
     return(

@@ -45,8 +45,13 @@
         border-bottom: 1px solid #ccc;
         padding-bottom: 10px;
 
+        &-container {
+            max-height: 400px;
+            overflow: auto;
+        }
+
         &:last-child {
-            border-bottom: 5px solid;
+            border-bottom: 0;
         }
 
         img {

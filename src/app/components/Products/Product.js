@@ -1,26 +1,28 @@
 import React from 'react';
 import { getItemFromList } from '../../utils/helpers';
+import { setCartProducts } from '../../redux/actions/cartActions';
+import { useSelector, useDispatch } from 'react-redux';
 
-const Product = ({ product, cart, setCart }) => {
-  const productId = product.id;
+const Product = ({ product }) => {
+  const cart = useSelector(state => state.cart.data);
+  const dispatch = useDispatch();
   
-  const selectedProduct = cart.find(selectedProduct => selectedProduct.id === productId);
+  const selectedProduct = getItemFromList(cart, product);
 
   const handleAddProduct = (product) => (e) => {
     product.isAdded = true;
-    const isProductExist = getItemFromList(cart, product);
 
-    if (!isProductExist) {
+    if (!selectedProduct) {
       const updatedProducts = [...cart, product];
      
-      setCart(updatedProducts);
+      dispatch(setCartProducts(updatedProducts));
     } else {
       ++selectedProduct.quantity;
 
       const selectedIndex = cart.findIndex(selectedIndex => selectedIndex.id === product.id);
       let updatedCart = [...cart];
       updatedCart[selectedIndex] = selectedProduct;
-      setCart(updatedCart);
+      dispatch(setCartProducts(updatedCart));
     } 
   };
   

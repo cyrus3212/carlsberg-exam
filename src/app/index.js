@@ -1,10 +1,10 @@
 import React from 'react';
-import ProductList from './components/Products/List';
+import Home from './components/Home';
 import './index.scss';
 
 const App = () => {
   return(
-      <ProductList />
+      <Home />
   )
 };
 
