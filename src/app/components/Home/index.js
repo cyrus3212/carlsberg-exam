@@ -11,7 +11,7 @@ const Product = () => {
 
     useEffect(() => {
         dispatch(getProducts());
-    }, []);
+    }, [dispatch]);
 
     return(
         <>

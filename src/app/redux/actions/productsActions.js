@@ -1,24 +1,10 @@
-import http from '../../common/http';
-import Product from '../../classes/product';
-import { GET_PRODUCTS_URL } from '../../common/api';
-import { GET_PRODUCTS } from './actionTypes';
+import { GET_PRODUCTS, SET_PRODUCTS } from './actionTypes';
 
-const getProductsFromDB = async () => {
-    const { data } = await http.get(GET_PRODUCTS_URL);
-    
-    const products = data.map(product => {
-        const prod = new Product(product);
+export const getProducts = () => ({
+    type: GET_PRODUCTS
+});
 
-        return prod;
-    });
-
-    return products;
-};
-
-export const getProducts = () => async (dispatch) => {
-    const data = await getProductsFromDB();
-    dispatch({
-        type: GET_PRODUCTS,
-        payload: data
-    });
-};
+export const setProducts = (data) => ({
+    type: SET_PRODUCTS,
+    data: data
+})

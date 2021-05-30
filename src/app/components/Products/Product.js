@@ -31,7 +31,7 @@ const Product = ({ product }) => {
         <div key={product.id} className="products__item">
             {product.isAdded && <span className="product-counter">{product.quantity}</span> }
             <img src={product.image} alt={product.name}/>
-            <div>{product.name}</div>
+            <h4>{product.name}</h4>
             <button 
               className="products__item-add-btn"
               onClick={handleAddProduct(product)}

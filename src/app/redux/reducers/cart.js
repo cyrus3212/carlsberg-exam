@@ -7,7 +7,7 @@ const initialState = {
 function rootReducer(state = initialState, action) {
     switch(action.type) {
         case SET_CART_PRODUCTS:
-            return { ...state, data: action.payload }
+            return { ...state, data: action.data }
 
         default:
             return state;

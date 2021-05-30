@@ -1,4 +1,4 @@
-import { GET_PRODUCTS } from '../actions/actionTypes';
+import { SET_PRODUCTS } from '../actions/actionTypes';
 
 const initialState = {
     data: []
@@ -6,8 +6,8 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
     switch(action.type) {
-        case GET_PRODUCTS:
-            return { ...state, data: action.payload }
+        case SET_PRODUCTS:
+            return { ...state, data: action.data }
 
         default:
             return state;

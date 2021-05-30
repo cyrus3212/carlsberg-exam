@@ -1,4 +1,4 @@
-export const getItemFromList = (list, item) => {
+export const getItemFromList = (list = [], item) => {
   if (item) {
     const itemId = item.id;
     const selectedItem = list.find(selectedItem => selectedItem.id === itemId);
